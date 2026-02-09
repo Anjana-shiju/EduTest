@@ -27,7 +27,6 @@ const ReviewPage = () => {
             </span>
           </Navbar.Brand>
 
-          {/* Mobile Profile & Toggle Side-by-Side */}
           <div className="d-flex align-items-center gap-2 order-lg-last">
              <img 
               src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop" 
@@ -55,20 +54,32 @@ const ReviewPage = () => {
 
       {/* --- MAIN CONTENT --- */}
       <Container className="py-4 py-md-5 flex-grow-1" style={{ maxWidth: '900px' }}>
-        <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
-          <h1 className="fw-bold fs-4 fs-md-3 mb-0">Physics Model Exam</h1>
-          <Button variant="outline-dark" size="sm" className="d-flex align-items-center gap-2 px-3 fw-medium w-100 w-sm-auto justify-content-center">
-            <Download size={14} /> Download Report
-          </Button>
+        
+        {/* Title, Date, and Sleek Download Button */}
+        <div className="mb-4">
+          <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
+            <div>
+              <h1 className="fw-bold fs-4 fs-md-3 mb-1" style={{ color: '#0f172a' }}>Physics Model Exam</h1>
+              <p className="text-muted small mb-0">Completed on 1/15/2024</p>
+            </div>
+            
+            <Button 
+              variant="outline-dark" 
+              className="d-flex align-items-center gap-2 px-3 py-1 fw-medium mt-2 mt-sm-0"
+              style={{ fontSize: '0.75rem', borderRadius: '6px', border: '1px solid #dee2e6' }}
+            >
+              <Download size={14} /> Download Report
+            </Button>
+          </div>
         </div>
 
-        {/* TAB SELECTOR: Responsive icons and sizing */}
+        {/* TAB SELECTOR: Shade and Icons matching Reference */}
         <div className="p-1 rounded-3 d-flex mb-4 mb-md-5 border shadow-sm" style={{ backgroundColor: '#eff3f7' }}>
           <Button 
             variant="link" 
             className="flex-grow-1 text-decoration-none text-muted small fw-medium py-2 d-flex align-items-center justify-content-center gap-2 text-nowrap"
           >
-            <BarChart3 size={14} strokeWidth={2.5} />
+            <BarChart3 size={14} strokeWidth={2} />
             <span className="d-none d-sm-inline">Results & Analysis</span>
             <span className="d-sm-none">Results</span>
           </Button>
@@ -77,7 +88,7 @@ const ReviewPage = () => {
             variant="white" 
             className="flex-grow-1 shadow-sm small fw-bold py-2 border-0 bg-white rounded-2 text-dark d-flex align-items-center justify-content-center gap-2 text-nowrap"
           >
-            <FileText size={14} strokeWidth={2.5} />
+            <FileText size={14} strokeWidth={2} />
             <span className="d-none d-sm-inline">Review Solutions</span>
             <span className="d-sm-none">Solutions</span>
           </Button>
@@ -85,10 +96,10 @@ const ReviewPage = () => {
 
         <div className="d-flex justify-content-between mb-3 align-items-center">
           <h5 className="fw-bold text-dark opacity-75 mb-0">Review Solutions</h5>
-          <Badge bg="light" text="dark" className="border rounded-pill fw-bold">3 Questions</Badge>
+          <Badge bg="light" text="dark" className="border rounded-pill fw-bold" style={{ fontSize: '0.7rem' }}>3 Questions</Badge>
         </div>
 
-        {/* Questions Loop */}
+        {/* Questions Cards */}
         {examData.map((item) => (
           <Card key={item.id} className="mb-4 border-0 shadow-sm" style={{ borderRadius: '12px' }}>
             <Card.Body className="p-3 p-md-4">
@@ -128,7 +139,7 @@ const ReviewPage = () => {
 
               <div className="pt-3 border-top d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
                 <small className="text-muted">Your answer: <b>{item.userAns}</b> | Correct: <b className="text-success">{item.correctAns}</b></small>
-                <Button variant="outline-secondary" size="sm" className="d-flex align-items-center gap-1 px-3 py-1 justify-content-center">
+                <Button variant="outline-secondary" size="sm" className="d-flex align-items-center gap-1 px-3 py-1 justify-content-center" style={{ fontSize: '0.75rem' }}>
                   <Eye size={14} /> Show Explanation
                 </Button>
               </div>
@@ -137,7 +148,7 @@ const ReviewPage = () => {
         ))}
       </Container>
 
-      {/* --- FOOTER (Fully Responsive) --- */}
+      {/* --- FOOTER (Responsive Stack) --- */}
       <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8' }} className="pt-5 pb-3 mt-auto">
         <Container>
           <Row className="gy-5 pb-5 border-bottom border-secondary border-opacity-25 row-cols-1 row-cols-sm-2 row-cols-lg-4">
