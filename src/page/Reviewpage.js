@@ -17,7 +17,7 @@ const ReviewPage = () => {
   return (
     <div style={{ backgroundColor: '#f9fafb', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
-      {/* --- RESPONSIVE NAVBAR --- */}
+      {/* --- NAVBAR --- */}
       <Navbar collapseOnSelect expand="lg" bg="white" className="border-bottom px-2 py-2 sticky-top shadow-sm">
         <Container>
           <Navbar.Brand href="#" className="d-flex align-items-center gap-2">
@@ -55,7 +55,7 @@ const ReviewPage = () => {
       {/* --- MAIN CONTENT --- */}
       <Container className="py-4 py-md-5 flex-grow-1" style={{ maxWidth: '900px' }}>
         
-        {/* Title, Date, and Sleek Download Button */}
+        {/* Title, Date and Small Button */}
         <div className="mb-4">
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
             <div>
@@ -73,21 +73,15 @@ const ReviewPage = () => {
           </div>
         </div>
 
-        {/* TAB SELECTOR: Shade and Icons matching Reference */}
+        {/* TAB SELECTOR */}
         <div className="p-1 rounded-3 d-flex mb-4 mb-md-5 border shadow-sm" style={{ backgroundColor: '#eff3f7' }}>
-          <Button 
-            variant="link" 
-            className="flex-grow-1 text-decoration-none text-muted small fw-medium py-2 d-flex align-items-center justify-content-center gap-2 text-nowrap"
-          >
+          <Button variant="link" className="flex-grow-1 text-decoration-none text-muted small fw-medium py-2 d-flex align-items-center justify-content-center gap-2 text-nowrap">
             <BarChart3 size={14} strokeWidth={2} />
             <span className="d-none d-sm-inline">Results & Analysis</span>
             <span className="d-sm-none">Results</span>
           </Button>
 
-          <Button 
-            variant="white" 
-            className="flex-grow-1 shadow-sm small fw-bold py-2 border-0 bg-white rounded-2 text-dark d-flex align-items-center justify-content-center gap-2 text-nowrap"
-          >
+          <Button variant="white" className="flex-grow-1 shadow-sm small fw-bold py-2 border-0 bg-white rounded-2 text-dark d-flex align-items-center justify-content-center gap-2 text-nowrap">
             <FileText size={14} strokeWidth={2} />
             <span className="d-none d-sm-inline">Review Solutions</span>
             <span className="d-sm-none">Solutions</span>
@@ -99,9 +93,13 @@ const ReviewPage = () => {
           <Badge bg="light" text="dark" className="border rounded-pill fw-bold" style={{ fontSize: '0.7rem' }}>3 Questions</Badge>
         </div>
 
-        {/* Questions Cards */}
+        {/* Questions Loop (TINTED BACKGROUND) */}
         {examData.map((item) => (
-          <Card key={item.id} className="mb-4 border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+          <Card 
+            key={item.id} 
+            className="mb-4 border-0 shadow-sm" 
+            style={{ borderRadius: '12px', backgroundColor: '#ebf3fb' }}
+          >
             <Card.Body className="p-3 p-md-4">
               <div className="d-flex justify-content-between mb-3 flex-wrap gap-2">
                 <div className="fw-bold d-flex align-items-center gap-2">
@@ -109,7 +107,7 @@ const ReviewPage = () => {
                   Question {item.id}
                 </div>
                 <div className="d-flex gap-2">
-                  <Badge bg="light" text="dark" className="text-uppercase border px-2 py-1" style={{ fontSize: '9px' }}>physics</Badge>
+                  <Badge bg="white" text="dark" className="text-uppercase border px-2 py-1" style={{ fontSize: '9px', fontWeight: '700' }}>physics</Badge>
                   <Badge bg="orange" className="px-2 py-1" style={{ fontSize: '9px', backgroundColor: '#fd7e14' }}>4 marks</Badge>
                 </div>
               </div>
@@ -125,7 +123,7 @@ const ReviewPage = () => {
                   let cardStyle = "p-3 border rounded-3 d-flex justify-content-between align-items-center ";
                   if (isCorrectOption) cardStyle += "bg-success bg-opacity-10 border-success text-success fw-bold";
                   else if (isUserWrong) cardStyle += "bg-danger bg-opacity-10 border-danger text-danger fw-bold";
-                  else cardStyle += "bg-white border-light-subtle";
+                  else cardStyle += "bg-white border-light-subtle shadow-sm";
 
                   return (
                     <div key={idx} className={cardStyle} style={{ fontSize: '0.85rem' }}>
@@ -137,9 +135,9 @@ const ReviewPage = () => {
                 })}
               </div>
 
-              <div className="pt-3 border-top d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+              <div className="pt-3 border-top border-secondary border-opacity-10 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
                 <small className="text-muted">Your answer: <b>{item.userAns}</b> | Correct: <b className="text-success">{item.correctAns}</b></small>
-                <Button variant="outline-secondary" size="sm" className="d-flex align-items-center gap-1 px-3 py-1 justify-content-center" style={{ fontSize: '0.75rem' }}>
+                <Button variant="white" size="sm" className="d-flex align-items-center gap-1 px-3 py-1 border shadow-sm justify-content-center" style={{ fontSize: '0.75rem', fontWeight: '600' }}>
                   <Eye size={14} /> Show Explanation
                 </Button>
               </div>
@@ -148,7 +146,7 @@ const ReviewPage = () => {
         ))}
       </Container>
 
-      {/* --- FOOTER (Responsive Stack) --- */}
+      {/* --- FOOTER --- */}
       <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8' }} className="pt-5 pb-3 mt-auto">
         <Container>
           <Row className="gy-5 pb-5 border-bottom border-secondary border-opacity-25 row-cols-1 row-cols-sm-2 row-cols-lg-4">
@@ -165,21 +163,18 @@ const ReviewPage = () => {
                 <Youtube size={18} className="text-white opacity-50" />
               </div>
             </Col>
-            
             <Col>
               <h6 className="text-white fw-bold mb-3 small text-uppercase">Quick Links</h6>
               <ul className="list-unstyled small d-grid gap-2">
                 <li>School Tuition</li><li>College Tuition</li><li>Entrance Coaching</li><li>Government Exams</li>
               </ul>
             </Col>
-
             <Col>
               <h6 className="text-white fw-bold mb-3 small text-uppercase">Support</h6>
               <ul className="list-unstyled small d-grid gap-2">
                 <li>Help Center</li><li>FAQ</li><li>Contact Us</li><li>Privacy Policy</li>
               </ul>
             </Col>
-
             <Col>
               <h6 className="text-white fw-bold mb-3 small text-uppercase">Contact Info</h6>
               <ul className="list-unstyled small d-grid gap-3">
